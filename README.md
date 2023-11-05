@@ -52,5 +52,6 @@ This app is not officially affiliated with Cloud Imperium Games or the Star Citi
 
 Enjoy the app, and see you in the 'verse!
 
-![image](https://github.com/rybacki/StarCitizenUtilityApp/assets/10670194/1cdab370-ce50-4f02-a70f-cf9cad9b7e86)
+![image](https://github.com/rybacki/StarCitizenUtilityApp/assets/10670194/a68558eb-8558-4f68-8c07-f0f5553ca180)
+
 
