@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Star Citizen Utility App is a simple and straightforward tool designed to help Star Citizen players manage common tasks with ease. Initially created for personal use, I've decided to share it with the community. It might be just as useful for you as it has been for me.
+Created out of a personal need to manage game-specific maintenance tasks more efficiently, the Star Citizen Utility App is a tailored tool to aid fellow enthusiasts. It simplifies the process of cache clearing for Star Citizen and your graphics drivers and offers a lookup for the upcoming special Technical Preview event times. Now shared with the community, it may enhance your gameplay just as it has mine.
 
 ## Features
 
