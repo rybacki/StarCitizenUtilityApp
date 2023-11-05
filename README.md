@@ -16,7 +16,7 @@ To get started with the Star Citizen Utility App, you'll need to clone this repo
 ### Prerequisites
 
 - Windows Operating System
-- .NET Runtime
+- <a href="https://dotnet.microsoft.com/en-us/download/dotnet">.NET Runtime</a>
 
 ### Installation
 
