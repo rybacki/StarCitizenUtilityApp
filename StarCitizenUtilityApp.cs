@@ -8,53 +8,73 @@ namespace StarCitizenUtilityApp
 {
     class Program
     {
-        static readonly Dictionary<string, string> schedule = new()
+        private static Dictionary<string, string> schedule = new Dictionary<string, string>
         {
-            ["2023-10-31T12:00:00"] = "Pacific Standard Time",
-            ["2023-11-01T06:00:00"] = "Pacific Standard Time",
-            ["2023-11-02T23:00:00"] = "Pacific Standard Time",
-            ["2023-11-04T06:00:00"] = "Pacific Standard Time",
-            ["2023-11-05T23:00:00"] = "Pacific Standard Time",
-            ["2023-11-06T12:00:00"] = "Pacific Standard Time",
-            ["2023-11-08T23:00:00"] = "Pacific Standard Time",
-            ["2023-11-09T12:00:00"] = "Pacific Standard Time",
-            ["2023-11-10T06:00:00"] = "Pacific Standard Time",
-            // Add more schedule entries here
+            // The time string format is directly in UTC, following the "yyyy-MM-ddTHH:mm:ss" pattern.
+            ["2023-10-31T19:00:00"] = "UTC", // 12 PM Pacific is 7 PM UTC on the same day
+            ["2023-11-01T13:00:00"] = "UTC", // 6 AM Pacific is 1 PM UTC on the same day
+            ["2023-11-03T06:00:00"] = "UTC", // 11 PM Pacific (Nov 2) is 6 AM UTC the next day (Nov 3)
+            ["2023-11-04T13:00:00"] = "UTC", // 6 AM Pacific is 1 PM UTC on the same day
+            ["2023-11-06T07:00:00"] = "UTC", // 11 PM Pacific (Nov 5) is 7 AM UTC the next day (Nov 6)
+            ["2023-11-06T20:00:00"] = "UTC", // 12 PM Pacific is 8 PM UTC on the same day
+            ["2023-11-09T07:00:00"] = "UTC", // 11 PM Pacific (Nov 8) is 7 AM UTC the next day (Nov 9)
+            ["2023-11-09T20:00:00"] = "UTC", // 12 PM Pacific is 8 PM UTC on the same day
+            ["2023-11-10T14:00:00"] = "UTC", // 6 AM Pacific is 2 PM UTC on the same day
         };
         static void Main()
         {
-            Console.WriteLine("Welcome to the Star Citizen Utility App.\n");
-            Console.WriteLine("It is advisable to regularly clear your cache,\nespecially immediately following the release of a new game build or hotfix.\n");
-            Console.WriteLine("1. Delete cache files for Star Citizen and Nvidia.");
-            Console.WriteLine("2. Delete cache files for Star Citizen and AMD.");
-            Console.WriteLine("3. Check Pyro Technical Preview Build server opening times. [Based on data from Nov 1st, 2023]");
-            Console.WriteLine("4. Exit\n");
-            Console.Write("Select an option: ");
+            bool running = true;
 
-            string? option = Console.ReadLine();
-
-            switch (option)
+            while (running)
             {
-                case "1":
-                    DeleteNvidiaCacheFiles();
-                    break;
-                case "2":
-                    DeleteAmdCacheFiles();
-                    break;
-                case "3":
-                    CheckServerOpeningTimes();
-                    break;
-                case "4":
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Invalid option, please try again.");
-                    break;
+                Console.WriteLine("Welcome to the Star Citizen Utility App.\n");
+                Console.WriteLine("It is advisable to regularly clear your cache,\nespecially immediately following the release of a new game build or hotfix.\n");
+                Console.WriteLine("1. Delete cache files for Star Citizen and Nvidia.");
+                Console.WriteLine("2. Delete cache files for Star Citizen and AMD.");
+                Console.WriteLine("3. Check Pyro Technical Preview Build server opening times. [Based on data from Nov 1st, 2023]");
+                Console.WriteLine("4. Exit\n");
+                Console.Write("Select an option: ");
+
+                string? option = Console.ReadLine();
+
+                switch (option)
+                {
+                    case "1":
+                        DeleteNvidiaCacheFiles();
+                        break;
+                    case "2":
+                        DeleteAmdCacheFiles();
+                        break;
+                    case "3":
+                        CheckServerOpeningTimes();
+                        break;
+                    case "4":
+                        running = false; // Setting running to false to exit the while loop and end the application
+                        Console.Clear();
+                        Console.WriteLine("           ________");
+                        Console.WriteLine("          |        \\");
+                        Console.WriteLine("  ______   \\$$$$$$$$");
+                        Console.WriteLine(" /      \\     /  $$");
+                        Console.WriteLine("|  $$$$$$\\   /  $$");
+                        Console.WriteLine("| $$  | $$  /  $$");
+                        Console.WriteLine("| $$__/ $$ /  $$");
+                        Console.WriteLine(" \\$$    $$|  $$");
+                        Console.WriteLine("  \\$$$$$$  \\$$");
+                        Console.WriteLine();
+                        Console.WriteLine("o7 See you in the 'verse!");
+                        Console.WriteLine("App will close in 2 seconds...");
+                        Thread.Sleep(2000); // Wait for 2 seconds
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option, please try again.");
+                        break;
+                }
+                Console.Clear(); // Clear the console for a clean slate after any option except exit.
             }
-            Console.WriteLine();
         }
         static void DeleteNvidiaCacheFiles()
         {
+            Console.Clear();
             ClearErrorLog();
             DeleteCacheFolder(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Star Citizen"));
             DeleteCacheFolder(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "NVIDIA", "DXCache"));
@@ -63,11 +83,13 @@ namespace StarCitizenUtilityApp
             DeleteCacheFolder(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "D3DSCache"));
 
             Console.WriteLine("\nStar Citizen and Nvidia cache deletion process is complete.");
-            Console.WriteLine("Press any key to exit...");
+            Console.WriteLine("Press any key to return to the main menu...");
             Console.ReadKey();
+            Console.Clear(); 
         }
         static void DeleteAmdCacheFiles()
         {
+            Console.Clear();
             ClearErrorLog();
             DeleteCacheFolder(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Star Citizen"));
             DeleteCacheFolder(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AMD", "DXCache"));
@@ -76,8 +98,9 @@ namespace StarCitizenUtilityApp
             DeleteCacheFolder(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "D3DSCache"));
 
             Console.WriteLine("\nStar Citizen and AMD cache deletion process is complete.");
-            Console.WriteLine("Press any key to exit...");
+            Console.WriteLine("\nPress any key to return to the main menu...");
             Console.ReadKey();
+            Console.Clear(); 
         }
         static void DeleteCacheFolder(string path)
         {
@@ -163,6 +186,7 @@ namespace StarCitizenUtilityApp
         }
         static void CheckServerOpeningTimes()
         {
+            Console.Clear();
             // Display local timezone
             TimeZoneInfo localZone = TimeZoneInfo.Local;
             Console.WriteLine($"Your Local Timezone: {localZone.StandardName}");
@@ -170,42 +194,88 @@ namespace StarCitizenUtilityApp
             // Calculate and display the next opening time and time left until the server opens
             DateTime? nextOpeningTime = null;
             TimeSpan? timeLeft = null;
+            bool isServerOpen = false;
+
+            DateTime localNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.Local);
+
             foreach (var entry in schedule)
             {
-                DateTime utcTime = DateTime.ParseExact(entry.Key, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
-                DateTime localTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, localZone);
+                DateTime utcTime = DateTime.ParseExact(entry.Key, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
+                DateTime localStartTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, TimeZoneInfo.Local); // Convert UTC opening time to local time
+                DateTime localEndTime = localStartTime.AddHours(8); // Server is open for 8 hours
 
-                if (localTime > DateTime.Now)
+                if (localNow >= localStartTime && localNow <= localEndTime)
                 {
-                    nextOpeningTime = localTime;
-                    timeLeft = nextOpeningTime - DateTime.Now;
+                    nextOpeningTime = localEndTime;
+                    timeLeft = nextOpeningTime - localNow;
+                    isServerOpen = true;
+                    break;
+                }
+                else if (localNow < localStartTime)
+                {
+                    nextOpeningTime = localStartTime;
+                    timeLeft = nextOpeningTime - localNow;
                     break;
                 }
             }
-
-            if (nextOpeningTime.HasValue) // Check if nextOpeningTime has a value
+            // When the server is open
+            if (isServerOpen && timeLeft.HasValue)
             {
-                timeLeft = nextOpeningTime.Value - DateTime.Now;
+                Console.Write("The Pyro Technical Preview Build server is ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("OPEN now!");
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.Write("Test time remaining: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                TimeSpan timeLeftValue = timeLeft.GetValueOrDefault(); // Safe to use as we checked HasValue above
+                Console.WriteLine($"{timeLeftValue.Hours} hours, {timeLeftValue.Minutes} minutes, and {timeLeftValue.Seconds} seconds");
+                Console.ResetColor();
+                Console.WriteLine("Press any key to return to the main menu...");
+                Console.ReadKey();
+                Console.Clear(); 
+            }
+            else if (nextOpeningTime.HasValue)
+            {
                 Console.Write("The next Pyro Technical Preview Build server is scheduled to open on ");
-                Console.ForegroundColor = ConsoleColor.Green; // Set text color to green
-                Console.WriteLine(nextOpeningTime.Value.ToString("f", CultureInfo.CreateSpecificCulture("en-US")));
-                Console.ResetColor(); // Reset to default color
+                Console.ForegroundColor = ConsoleColor.Green;
+                DateTime nextOpeningTimeValue = nextOpeningTime.GetValueOrDefault(); // This is already in local time
+                Console.WriteLine(nextOpeningTimeValue.ToString("f", CultureInfo.CreateSpecificCulture("en-US")));
+                Console.ResetColor();
+                Console.Write("Time remaining until opening: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                TimeSpan timeLeftValue = timeLeft.GetValueOrDefault();
+                Console.WriteLine($"{timeLeftValue.Days} days, {timeLeftValue.Hours} hours, {timeLeftValue.Minutes} minutes, and {timeLeftValue.Seconds} seconds");
+                Console.ResetColor();
 
-                Console.Write("Time remaining: ");
-                Console.ForegroundColor = ConsoleColor.Green; // Set text color to green
-                Console.WriteLine($"{timeLeft.Value.Days} days, {timeLeft.Value.Hours} hours, {timeLeft.Value.Minutes} minutes, and {timeLeft.Value.Seconds} seconds");
-                Console.ResetColor(); // Reset to default color
+                // Ask user if they want to check a different timezone only if the server is not open
+                Console.Write("Would you like to check a different time zone? (yes/no): ");
+                string response = Console.ReadLine()?.ToLower() ?? string.Empty;
+
+                if (response == "yes")
+                {
+                    ListTimeZoneOptions();
+                }
+                else
+                {
+                    Console.WriteLine("Press any key to return to the main menu...");
+                    Console.ReadKey();
+                    Console.Clear(); 
+                }
             }
             else
             {
                 Console.WriteLine("No upcoming server openings are scheduled or the schedule is out of date.");
+                Console.WriteLine("Press any key to return to the main menu...");
+                Console.ReadKey();
+                Console.Clear(); 
             }
+        }
 
-
-            // Ask user if they want to check a different timezone
-            Console.Write("Would you like to check a different time zone? (yes/no): ");
+        static void AskForTimeZoneCheck()
+        {
+            Console.Write("Would you like to check the server status in a different time zone? (yes/no): ");
             string response = Console.ReadLine()?.ToLower() ?? string.Empty;
-
 
             if (response == "yes")
             {
@@ -213,8 +283,9 @@ namespace StarCitizenUtilityApp
             }
             else
             {
-                Console.WriteLine("Press any key to exit...");
+                Console.WriteLine("Press any key to return to the main menu...");
                 Console.ReadKey();
+                Console.Clear(); 
             }
         }
         static void ListTimeZoneOptions()
@@ -237,47 +308,50 @@ namespace StarCitizenUtilityApp
         }
         static void DisplayTimesForSelectedTimeZone(TimeZoneInfo selectedTimeZone)
         {
+            Console.Clear();
             DateTime? nextOpeningTime = null;
             TimeSpan? timeLeft = null;
+
+            // Get the current time in the selected time zone
+            DateTime nowInSelectedTimeZone = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, selectedTimeZone);
 
             // Calculate the next opening time in the selected timezone
             foreach (var entry in schedule)
             {
-                DateTime utcTime = DateTime.ParseExact(entry.Key, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
+                DateTime utcTime = DateTime.ParseExact(entry.Key, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
                 DateTime selectedZoneTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, selectedTimeZone);
 
-                if (selectedZoneTime > DateTime.UtcNow)
+                // We compare the times in the selected time zone
+                if (nowInSelectedTimeZone < selectedZoneTime)
                 {
                     nextOpeningTime = selectedZoneTime;
-                    timeLeft = nextOpeningTime - TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, selectedTimeZone);
+                    // Calculate time left until the server opens in the selected time zone
+                    timeLeft = nextOpeningTime.Value - nowInSelectedTimeZone;
                     break;
                 }
             }
 
-            // Display results in the specified format
+            // Display results
             Console.WriteLine($"Chosen Timezone: {selectedTimeZone.DisplayName}");
-
             if (nextOpeningTime.HasValue && timeLeft.HasValue)
             {
-                string formattedTimeLeft = $"{timeLeft.Value.Days} days, {timeLeft.Value.Hours} hours, {timeLeft.Value.Minutes} minutes, and {timeLeft.Value.Seconds} seconds";
-
-                Console.Write("The upcoming Pyro Technical Preview Build server is set to launch on ");
-                Console.ForegroundColor = ConsoleColor.Green; // Set text color to green
-                Console.WriteLine(nextOpeningTime.Value.ToString("f", CultureInfo.CreateSpecificCulture("en-US")));
-                Console.ResetColor(); // Reset to default color
-
-                Console.Write("Time remaining: ");
-                Console.ForegroundColor = ConsoleColor.Green; // Set text color to green
-                Console.WriteLine(formattedTimeLeft);
-                Console.ResetColor(); // Reset to default color
+                Console.Write("The next Pyro Technical Preview Build server is scheduled to open on ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"{nextOpeningTime.Value.ToString("f", CultureInfo.CreateSpecificCulture("en-US"))} ({selectedTimeZone.StandardName})");
+                Console.ResetColor();
+                Console.Write("Time remaining until opening: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"{timeLeft.Value.Days} days, {timeLeft.Value.Hours} hours, {timeLeft.Value.Minutes} minutes, and {timeLeft.Value.Seconds} seconds");
+                Console.ResetColor();
             }
             else
             {
                 Console.WriteLine("No upcoming server openings are scheduled or the schedule is out of date.");
             }
 
-            Console.WriteLine("Press any key to exit...");
+            Console.WriteLine("Press any key to return to the main menu...");
             Console.ReadKey();
+            Console.Clear(); 
         }
         static void ClearErrorLog()
         {
