@@ -8,6 +8,15 @@ Created out of a personal need to manage game-specific maintenance tasks more ef
 
 - **Cache Deletion**: Quickly clear cache files specific to Star Citizen and your graphics driver (Nvidia or AMD), which is especially useful after new game builds or hotfix releases.
 - **Server Opening Times**: Check when the Pyro Technical Preview Build server is scheduled to open in your local timezone and get countdowns to the next available play session.
+- **Screenshots Management**:
+   - List available screenshots in game builds.
+   - Delete all screenshots.
+   - Remove screenshots from selected game builds.
+   - The app automatically detects game builds for convenience.
+- **USER Folder Backup and Management**:
+   - Create backups of the 'USER' folder for a specific game build.
+   - Delete the 'USER' folder from a specific game build or all game builds.
+   - The app automatically detects game builds for convenience.
 
 ## Getting Started
 
@@ -62,6 +71,7 @@ This app is not officially affiliated with Cloud Imperium Games or the Star Citi
 
 Enjoy the app, and see you in the 'verse!
 
-![image](https://github.com/rybacki/StarCitizenUtilityApp/assets/10670194/a68558eb-8558-4f68-8c07-f0f5553ca180)
+![StarCitizenUtilityApp_v1 1](https://github.com/rybacki/StarCitizenUtilityApp/assets/10670194/867ad5f9-109d-416a-8dc0-0c104d0c2a7b)
+
 
 
