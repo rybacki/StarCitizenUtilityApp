@@ -29,8 +29,18 @@ Upon launching the app, you will be greeted with a menu of options:
 
 1. Delete cache files for Star Citizen and Nvidia.
 2. Delete cache files for Star Citizen and AMD.
-3. Check Pyro Technical Preview Build server opening times.
-4. Exit.
+3. Manage screenshots:
+   - List available screenshots in specific game builds.
+   - Delete all screenshots.
+   - Remove screenshots from selected game builds.
+4. Create a backup or delete the 'USER' folder from the game build:
+   - Backup Options:
+     1. Backup 'USER' folder for a specific game build.
+   - Deletion Options:
+     3. Delete 'USER' folder from a specific game build.
+     4. Delete 'USER' folders from all game builds.
+5. Check Pyro Technical Preview Build server opening times. [Based on data from Nov 1st, 2023]
+6. Exit the application.
 
 Select the desired option by typing the number and pressing Enter.
 
