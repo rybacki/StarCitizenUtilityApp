@@ -2,7 +2,7 @@
 
 ## Overview
 
-Created out of a personal need to manage game-specific maintenance tasks more efficiently, the Star Citizen Utility App is now shared with the community. It simplifies the process of cache clearing for Star Citizen and your graphics drivers, and offers a lookup for the upcoming special Technical Preview event times. It may enhance your gameplay just as it has mine.
+Created out of a personal need to manage game-specific maintenance tasks more efficiently, the Star Citizen Utility App is now shared with the community. It simplifies the process of cache clearing for Star Citizen and your graphics drivers, offers a lookup for the upcoming special Technical Preview event times, and introduces several other new features in the latest release. It may enhance your gameplay just as it has improved mine.
 
 ## Features
 
@@ -17,6 +17,8 @@ Created out of a personal need to manage game-specific maintenance tasks more ef
    - Create backups of the 'USER' folder for a specific game build.
    - Delete the 'USER' folder from a specific game build or all game builds.
    - The app automatically detects game builds for convenience.
+- **Buy Back Token Schedule Checker**: Discover when the next distribution of tokens is scheduled in your timezone or any other timezone you want to check, helping you plan your buybacks effectively.
+- **User Profile Crawler**: View publicly available details about other citizens and their organizations listed on their user profiles.
 
 ## Getting Started
 
@@ -36,20 +38,22 @@ To get started with the Star Citizen Utility App, you'll need to clone this repo
 
 Upon launching the app, you will be greeted with a menu of options:
 
-1. Delete cache files for Star Citizen and Nvidia.
-2. Delete cache files for Star Citizen and AMD.
-3. Manage screenshots:
+1. Clear Star Citizen and Nvidia cache files.
+2. Clear Star Citizen and AMD cache files.
+3. Manage your screenshots:
    - List available screenshots in specific game builds.
    - Delete all screenshots.
    - Remove screenshots from selected game builds.
-4. Create a backup or delete the 'USER' folder from the game build:
+4. Create a backup or delete the 'USER' folder in the game build:
    - Backup Options:
-     1. Backup 'USER' folder for a specific game build.
+     - Backup 'USER' folder for a specific game build.
    - Deletion Options:
-     3. Delete 'USER' folder from a specific game build.
-     4. Delete 'USER' folders from all game builds.
-5. Check Pyro Technical Preview Build server opening times. [Based on data from Nov 1st, 2023]
-6. Exit the application.
+     - Delete 'USER' folder from a specific game build.
+     - Delete 'USER' folders from all game builds.
+5. Check a Star Citizen user profile data.
+6. View the 2024 Buy Back Token Schedule.
+7. Check Pyro Technical Preview Build server opening times. [Based on data from Nov 1st, 2023]
+8. Exit the application.
 
 Select the desired option by typing the number and pressing Enter.
 
@@ -71,7 +75,9 @@ This app is not officially affiliated with Cloud Imperium Games or the Star Citi
 
 Enjoy the app, and see you in the 'verse!
 
-![StarCitizenUtilityApp_v1 1](https://github.com/rybacki/StarCitizenUtilityApp/assets/10670194/867ad5f9-109d-416a-8dc0-0c104d0c2a7b)
+![Screenshot 2024-01-23 172113](https://github.com/rybacki/StarCitizenUtilityApp/assets/10670194/e84b6256-f0b5-4f60-a3ee-df8245b2907f)
+
+
 
 
 
